@@ -2,6 +2,12 @@
 
 EasyAR STS (Security Token Service) provide finer grained and temporary access controlling service
 
+### Run project
+
+Pycharm IDE and import
+
+or just run: python3 uac.py
+
 ### API URL
 
 URL: https://uac.easyar.com 
