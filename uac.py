@@ -6,7 +6,6 @@ import json
 
 def get_sign(key, secret, params, key_name='apiKey'):
     if not isinstance(params, dict):
-        logging.warning('params must be dict')
         return False
     params[key_name] = key
     params['timestamp'] = int(time.time() * 1000)
@@ -22,9 +21,9 @@ if __name__ == '__main__':
     host = 'https://uac.easyar.com/token/v2'
     req_header = { 'Content-Type' : 'application/json; charset=UTF-8' }
 
-    req_body = { "apiKey": "1ab2c85790aefd1eeeccf030211cf252", "expires": 3600 }
+    req_body = { "apiKey": api_key, "expires": 3600 }
     req_body ["signature"] = get_sign(api_key, api_secret, req_body)
     print(json.dumps(req_body) )
 
     response = requests.post(host, headers=req_header, data=json.dumps(req_body) )
-    print(response.content)
+    print(response.json())
